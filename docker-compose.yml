@@ -7,6 +7,9 @@ services:
   web:
     build: ./webserver
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PASSWORD=
     volumes:
       - .:/CmdrShepard-webserver
     ports:
@@ -15,8 +18,11 @@ services:
       - db
   chatbot:
     build: ./chatbot
-    command: bin/core.rb
+    command: ruby core.rb
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PASSWORD=
     volumes:
-      - .:CmdrShepard-chatbot
+      - .:/CmdrShepard-chatbot
     depends_on:
       - db
