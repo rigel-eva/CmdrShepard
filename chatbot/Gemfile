@@ -1,3 +1,4 @@
 source 'https://rubygems.org'
 gem 'twitch-chat', '~> 0.0.1'
+gem 'activerecord'
 gem 'pg'
