@@ -21,6 +21,7 @@ class User < ApplicationRecord
             discord_user.name=auth_hash.extra.raw_info['username']
             discord_user.discriminator=auth_hash.extra.raw_info['discriminator']
             discord_user.icon=auth_hash.info['image']
+            discord_user.token=auth_hash.credentials['token']
             discord_user.user_id=user.id
             discord_user.authentications
             discord_user.save!
@@ -33,6 +34,7 @@ class User < ApplicationRecord
             twitch_user.uid=auth_hash['uid']
             twitch_user.name=auth_hash.info['name']
             twitch_user.icon=auth_hash.info['image']
+            twitch_user.token=auth_hash.credentials['token']
             twitch_user.user_id=user.id
             twitch_user.save!
             return user
