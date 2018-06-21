@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/rigel-eva/twitch-chat.git
+  revision: dfa23765efb3a4c6ac8bf67985774c054df9f7db
+  specs:
+    twitch-chat (0.0.1)
+      activesupport
+      eventmachine
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -15,14 +23,19 @@ GEM
     arel (9.0.0)
     concurrent-ruby (1.0.5)
     eventmachine (1.2.7)
+    faye-websocket (0.10.7)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
     pg (1.0.0)
     thread_safe (0.3.6)
-    twitch-chat (0.0.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    websocket-driver (0.7.0)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.3)
 
 PLATFORMS
   ruby
@@ -30,8 +43,9 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   eventmachine
+  faye-websocket
   pg
-  twitch-chat (~> 0.0.1)
+  twitch-chat!
 
 BUNDLED WITH
    1.11.2

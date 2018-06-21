@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-gem 'twitch-chat', '~> 0.0.1'
+gem 'twitch-chat', :git => 'https://github.com/rigel-eva/twitch-chat.git'
 gem 'activerecord'
 gem 'pg'
 gem 'eventmachine'
+gem 'faye-websocket'
