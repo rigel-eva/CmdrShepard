@@ -34,8 +34,7 @@ client=Twitch::Chat::Client.new(channel:"chatrooms:#{twitch_user.uid}:6b324056-a
         log match[-1] if match
         if(match&&botCommands.has_key?(match[-1]))
             #TODO: Figure out a better way to do this(as in let the function call the command)
-            pMessage=botCommands[match[-1]].(user,message)
-            send_message pMessage unless pMessage.nil?
+            botCommands[match[-1]].(user,message, method(:send_message))
         end
     end
 end
