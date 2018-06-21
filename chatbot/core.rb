@@ -17,25 +17,27 @@ chat_oauth=TwitchChatKey.find_by(enabled:true)
 twitch_user=chat_oauth.twitch_user
 #TODO: Add database option to ask which channel to connect to
 #Let's define somewhere to put all of our various commands
-commands={}
+botCommands={}
 #Next up: Loading all the files in bin
-Dir["#{project_root}/app/bin/*.rb"].each {|file| load file}
-commands.store("beep", method(:beep))
+Dir["#{project_root}/app/bin/*.rb"].each {|file| 
+    load file
+    botCommands.merge!(commands())
+}
 client=Twitch::Chat::Client.new(channel:"chatrooms:#{twitch_user.uid}:6b324056-abd8-4eaa-b52d-a921f2586ec7", username:'CmdrShepardBot_development',nickname:'rigel_eva', password:"oauth:#{chat_oauth.token}")do
     on(:connected) do
         send_message "Yo! Everything is working on this end!"
-        puts "Sent Connect Message"
+        puts botCommands
     end  
     on(:message) do |user, message|
         #log "Recieved Message!: #{message.to_s}"
         match=message.match(/(?:^!)(\S+)/)
         log match[-1] if match
-        if(match&&commands.has_key?(match[-1]))
+        if(match&&botCommands.has_key?(match[-1]))
             #TODO: Figure out a better way to do this(as in let the function call the command)
-            pMessage=commands[match[-1]].(user,message)
+            pMessage=botCommands[match[-1]].(user,message)
             send_message pMessage unless pMessage.nil?
         end
-     end
+    end
 end
 client.run!
 puts "Exiting!"
