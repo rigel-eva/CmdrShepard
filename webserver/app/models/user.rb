@@ -23,7 +23,6 @@ class User < ApplicationRecord
             discord_user.icon=auth_hash.info['image']
             discord_user.token=auth_hash.credentials['token']
             discord_user.user_id=user.id
-            discord_user.authentications
             discord_user.save!
             return user
         end

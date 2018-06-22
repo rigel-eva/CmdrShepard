@@ -1,6 +1,5 @@
-GIT
-  remote: https://github.com/rigel-eva/omniauth-twitch.git
-  revision: 5d2ea8305546c47babc248d2deb8effe1b2c07c3
+PATH
+  remote: /home/rigel/Programing/omniauth-twitch
   specs:
     omniauth-twitch (0.3.0)
       omniauth-oauth2 (~> 1.1)

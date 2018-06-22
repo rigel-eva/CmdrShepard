@@ -8,3 +8,4 @@ gem 'faye-websocket'
 #Twitch/Discord Clients
 gem 'twitch-chat', :git => 'https://github.com/rigel-eva/twitch-chat.git'
 gem 'discordrb'
+gem 'rest-client'

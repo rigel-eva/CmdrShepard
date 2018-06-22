@@ -2,8 +2,8 @@ def beep(user, message, chatter)
     chatter.("Beep Beep!")
 end
 def sheep(user, message, chatter)
-    twitch_user=TwitchUser.find_by(name:user)
-    chatter.("@#{user} , You currently have #{twitch_user.user.sheep} sheep.You have been in the chat for #{"INSERT TIME KEEPING CODE HERE"}")
+    puts user.user
+    chatter.("@#{user.name} , You currently have #{user.user.sheep} sheep.You have been in the chat for #{"INSERT TIME KEEPING CODE HERE"}")
 end
 def gamble(user, message, chatter)
     chatter.("Gamble is Currently not Implemented")
