@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
-gem 'twitch-chat', :git => 'https://github.com/rigel-eva/twitch-chat.git'
+#Database, Active Record
 gem 'activerecord'
 gem 'pg'
+#websocket Hosts
 gem 'eventmachine'
 gem 'faye-websocket'
+#Twitch/Discord Clients
+gem 'twitch-chat', :git => 'https://github.com/rigel-eva/twitch-chat.git'
+gem 'discordrb'
