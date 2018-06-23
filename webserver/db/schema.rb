@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_133625) do
+ActiveRecord::Schema.define(version: 2018_06_23_194740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,13 @@ ActiveRecord::Schema.define(version: 2018_06_22_133625) do
   end
 
   create_table "twitch_chat_keys", force: :cascade do |t|
+    t.string "uid"
+    t.string "name"
     t.string "token"
+    t.text "targetChannels", default: [], array: true
     t.boolean "enabled"
-    t.bigint "twitch_user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["twitch_user_id"], name: "index_twitch_chat_keys_on_twitch_user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_twitch_chat_keys_on_user_id"
   end
 
   create_table "twitch_users", force: :cascade do |t|

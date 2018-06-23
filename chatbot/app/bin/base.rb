@@ -32,6 +32,10 @@ end
 def like_a_sheep(user, message, chatter)
     chatter.("Meow Meow I'm A cow. I said Meow meow I'm a cow.")
 end
+def like_a_nori(user, message, chatter)
+    chatter.("Nyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    chatter.("nyamit nyyy nyould nyooo nyooo nyoo nyat?!")
+end
 def commands
     return {
         "beep"=>method(:beep),
@@ -44,6 +48,7 @@ def commands
         "nexthero"=>method(:next_hero),
         "cocast"=>method(:cocast),
         "streamrequest"=>method(:stream_request),
-        "beepbeep"=>method(:like_a_sheep)
+        "beepbeep"=>method(:like_a_sheep),
+        "nyanya"=>method(:like_a_nori)
     }
 end

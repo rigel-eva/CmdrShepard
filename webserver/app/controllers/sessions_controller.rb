@@ -9,18 +9,18 @@ class SessionsController < ApplicationController
         welcomeMessage=""
         case params[:provider]
         when "discord"
-            @user=User.from_discord(request.env['omniauth.auth'])
+            @user=User.from_discord(request.env['omniauth.auth'], session)
             welcomeMessage="Welcome, "
         when "twitch"
-            @user=User.from_twitch(request.env['omniauth.auth'])
+            @user=User.from_twitch(request.env['omniauth.auth'], session)
             welcomeMessage="Welcome, "
         when "twitch_chat"
-            @user=TwitchChatKey.setupKey(request.env['omniauth.auth'])
+            @user=TwitchChatKey.setupKey(request.env['omniauth.auth'], session)
             welcomeMessage="Thank you for entering your stream key, "
         end
         puts @user
         session[:user_id] = @user.id
-
+        
         if ! @user.twitch_user.nil?
             welcomeMessage+=@user.twitch_user.name
         end
