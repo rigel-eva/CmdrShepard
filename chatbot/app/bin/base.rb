@@ -3,7 +3,7 @@ def beep(user, message, chatter)
 end
 def sheep(user, message, chatter)
     puts user.user
-    chatter.("@#{user.name} , You currently have #{user.user.sheep} sheep.You have been in the chat for #{"INSERT TIME KEEPING CODE HERE"}")
+    chatter.("#{user.mention} , You currently have #{user.user.sheep} sheep.You have been in the chat for #{"INSERT TIME KEEPING CODE HERE"}")
 end
 def gamble(user, message, chatter)
     chatter.("Gamble is Currently not Implemented")

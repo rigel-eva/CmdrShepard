@@ -3,8 +3,8 @@ class User < ApplicationRecord
     has_one :twitch_user
     has_many :twitch_chat_key
     class << self
-        def from_thirdParty(id, session)
-            id=session[:user_id] if id.nil?
+        def from_thirdParty(id, session=nil)
+            id=session[:user_id] if id.nil?&& !session.nil?
             user=find_or_create_by(id:id)
             if user.sheep.nil?
                 user.sheep=0
