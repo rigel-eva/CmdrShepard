@@ -1,5 +1,6 @@
-PATH
-  remote: /home/rigel/Programing/twitch-chat
+GIT
+  remote: https://github.com/rigel-eva/twitch-chat.git
+  revision: 38a100f384de7551b7b53298050c7f2c34ee4105
   specs:
     twitch-chat (0.0.1)
       activesupport
