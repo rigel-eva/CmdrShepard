@@ -6,7 +6,7 @@ def beep(user, message, chatter)
 end
 def sheep(user, message, chatter)
     puts user.user
-    chatter.("#{user.mention} , You currently have #{user.user.sheep} sheep.You have been in the chat for #{distance_of_time_in_words(user.user.twitch_user.timeWatched)}")
+    chatter.("#{user.mention} , You currently have #{user.user.sheep} sheep.You have been in the chat for #{distance_of_time_in_words(0,user.user.twitch_user.timeWatched.minutes)}")
 end
 def gamble(user, message, chatter)
     return_string=""
