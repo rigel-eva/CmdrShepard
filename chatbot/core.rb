@@ -67,13 +67,13 @@ threads["discord"]=Thread.new{
     @discordBot.run
 }
 threads["timeKeeper"]=Thread.new{
-    #Add code to tick up when user joins
+    logger = Logger.new(STDOUT)
     while true
         unless(!JSON::parse(RestClient.get("https://api.twitch.tv/helix/streams?user_id=#{twitch_user.uid}",{"client-ID"=>ENV["TWITCH_KEY"]}))["data"].empty?)
             JSON::parse(RestClient.get("http://tmi.twitch.tv/group/user/#{twitch_user.uid}/chatters"))["chatters"].each{|type, user|
                 luser=TwitchUser.findOrCreatebyName(user)
                 luser.user.sheep+=1
-                puts "giving 1 sheep to #{name}"
+                logger.debug("giving 1 sheep to #{name}")
                 luser.user.save!
                 luser.save!
             }
