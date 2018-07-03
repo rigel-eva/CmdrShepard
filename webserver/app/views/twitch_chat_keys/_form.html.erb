@@ -1,0 +1,17 @@
+<%= form_with(model: twitch_chat_key, local: true) do |form| %>
+  <% if twitch_chat_key.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(twitch_chat_key.errors.count, "error") %> prohibited this twitch_chat_key from being saved:</h2>
+
+      <ul>
+      <% twitch_chat_key.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

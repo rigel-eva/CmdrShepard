@@ -27,5 +27,8 @@ class TwitchUser < ApplicationRecord
             twitch_user.save!
             return twitch_user
         end
+        def findUserFromChat(info)
+            findOrCreatebyName(info)
+        end
     end
 end

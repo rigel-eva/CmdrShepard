@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rigel-eva/twitch-chat.git
-  revision: 38a100f384de7551b7b53298050c7f2c34ee4105
+  revision: b629d42ce3fafd874cc5ad58ea6691471eaefa9b
   specs:
     twitch-chat (0.0.1)
       activesupport
@@ -9,6 +9,12 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    actionview (5.2.0)
+      activesupport (= 5.2.0)
+      builder (~> 3.1)
+      erubi (~> 1.4)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.0.3)
     activemodel (5.2.0)
       activesupport (= 5.2.0)
     activerecord (5.2.0)
@@ -21,7 +27,9 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
+    builder (3.2.3)
     concurrent-ruby (1.0.5)
+    crass (1.0.4)
     discordrb (3.2.1)
       discordrb-webhooks (~> 3.2.0.1)
       opus-ruby
@@ -32,35 +40,39 @@ GEM
       rest-client
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    erubi (1.7.1)
     event_emitter (0.2.6)
     eventmachine (1.2.7)
-    eventmachine (1.2.7-x64-mingw32)
     faye-websocket (0.10.7)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     ffi (1.9.25)
-    ffi (1.9.25-x64-mingw32)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    loofah (2.2.2)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.5.9)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_portile2 (2.3.0)
     minitest (5.11.3)
     netrc (0.11.0)
+    nokogiri (1.8.3)
+      mini_portile2 (~> 2.3.0)
     opus-ruby (1.0.1)
       ffi
     pg (1.0.0)
-    pg (1.0.0-x64-mingw32)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
+    rails-html-sanitizer (1.0.4)
+      loofah (~> 2.2, >= 2.2.2)
     rbnacl (3.4.0)
       ffi
     rest-client (2.0.2)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
-    rest-client (2.0.2-x64-mingw32)
-      ffi (~> 1.9)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -70,7 +82,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    unf_ext (0.0.7.5-x64-mingw32)
     websocket (1.2.8)
     websocket-client-simple (0.3.0)
       event_emitter
@@ -81,9 +92,9 @@ GEM
 
 PLATFORMS
   ruby
-  x64-mingw32
 
 DEPENDENCIES
+  actionview
   activerecord
   discordrb
   eventmachine
@@ -93,4 +104,4 @@ DEPENDENCIES
   twitch-chat!
 
 BUNDLED WITH
-   1.16.1
+   1.11.2

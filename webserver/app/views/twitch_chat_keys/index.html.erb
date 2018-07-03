@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Twitch Chat Keys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @twitch_chat_keys.each do |twitch_chat_key| %>
+      <tr>
+        <td><%=twitch_chat_key.name%></td>
+        <td><%=twitch_chat_key.enabled%></td>
+        <td><%= link_to 'Enable', controller: "twitch_chat_keys" , action: "enable",method: :post, id: twitch_chat_key.id, method: :post %>
+        <td><%= link_to 'Show', twitch_chat_key %></td>
+        <td><%= link_to 'Edit', edit_twitch_chat_key_path(twitch_chat_key) %></td>
+        <td><%= link_to 'Destroy', twitch_chat_key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
