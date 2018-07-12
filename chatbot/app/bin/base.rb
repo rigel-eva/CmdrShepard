@@ -74,7 +74,7 @@ def truth_or_dare(user,message,chatter)
         owner=User.find_by(owner:true).discord_user
         channel=@discordBot.pm_channel(owner.id)
         @discordBot.send_message(channel,"#{user.name} has Issued a truth or dare: #{match[-1]}")
-        return_string="Sent! 😈"
+        return_string="Sent!"
     end
     chatter.(return_string)
 end
