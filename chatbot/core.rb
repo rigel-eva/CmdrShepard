@@ -1,14 +1,16 @@
 require "rubygems"
-require "bundler/setup"
 require "active_record"
+require "bundler/setup"
 require 'erb'
 require 'twitch/chat'
 require "discordrb"
+#puts "#{ApplicationRecord.class}"
 CMDRSHEPARD=true;
 COMMAND_PREFIX="!"
 #Getting Active Record set up (Taken from https://github.com/jwo/ActiveRecord-Without-Rails/blob/master/ar-no-rails.rb)
 project_root = File.dirname(File.absolute_path(__FILE__))
-Dir.glob(project_root + "/app/models/*.rb").each{|f| require f}
+require "#{project_root}/app/models/application_record.rb"
+Dir.glob(project_root + "/app/models/*.rb").each{|f| require f unless f=="#{proejct_root}/app/models/application_record.rb"}
 connection_details = YAML::load(ERB.new(File.read('config/database.yml')).result)
 ActiveRecord::Base.establish_connection(connection_details)
 #Getting our Twitch Chat Key...
