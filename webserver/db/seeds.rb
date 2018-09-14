@@ -5,5 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user =User.create(sheep:88888888, admin:true)
+user =User.create(sheep:88888888, admin:true,owner:true)
 twitch_user=TwitchUser.create(uid:30837482,user: user)

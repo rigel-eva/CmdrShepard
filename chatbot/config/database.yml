@@ -1,6 +1,6 @@
 adapter: postgresql
 encoding: unicode
 host: <%= ENV['DATABASE_HOST']%>
-username: postgres
+username: <%= ENV['DATABASE_USER']%>
 password: <%= ENV['DATABASE_PASSWORD'] %>
 database: CmdrShepard_development

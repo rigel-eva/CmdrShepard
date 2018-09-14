@@ -1,5 +1,13 @@
 require 'action_view'
 include ActionView::Helpers::DateHelper
+COSTS={
+    "truth_or_dare" => 20,
+    "spar"=>60,
+    "sheep_spar"=>120,
+    "next_hero"=>60,
+    "cocast"=>2000,
+    "stream_request"=>5000
+}
 def usage_Helper(method)
     return "Usage: #{COMMAND_PREFIX}#{commands.select{|key,value|value==method(method)}.keys[0]}"
 end
@@ -63,7 +71,10 @@ def truth_or_dare(user,message,chatter)
     if(match.nil?)
         return_string="#{user.mention}, #{usage_Helper(:truth_or_dare)} [Question]"
     else
-        return_string="Truth or Dare is currently not Implemented"
+        owner=User.find_by(owner:true).discord_user
+        channel=@discordBot.pm_channel(owner.id)
+        @discordBot.send_message(channel,"#{user.name} has Issued a truth or dare: #{match[-1]}")
+        return_string="Sent!"
     end
     chatter.(return_string)
 end
@@ -82,7 +93,11 @@ def next_hero(user, message, chatter)
     if(match.nil?)
         return_string="#{user.mention}, #{usage_Helper(:next_hero)} [Hero]"
     else
-        return_string="Truth or Dare is currently not Implemented"
+        if(user.user.sheep<COSTS["next_hero"])
+            return_string="Sorry, but you don't quite have the Baaaa to cover that transaction, please try again later"
+        else
+            User.find
+        end
     end
     chatter.(return_string)
 end
@@ -102,6 +117,7 @@ def like_a_sheep(user, message, chatter)
     chatter.("Meow Meow I'm A cow. I said Meow meow I'm a cow.")
 end
 def like_a_nori(user, message, chatter)
+    puts(user)
     chatter.("Nyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     chatter.("nyamit nyyy nyould nyooo nyooo nyoo nyat?!")
 end

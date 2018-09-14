@@ -9,6 +9,7 @@ services:
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     environment:
       - DATABASE_HOST=db
+      - DATABASE_USER=postgres
       - DATABASE_PASSWORD=
     volumes:
       - .:/CmdrShepard-webserver
