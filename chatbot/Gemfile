@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 #Database, Active Record
+gem 'nokogiri','=1.7.2'
 gem 'activerecord'
 gem 'pg'
 #websocket Hosts

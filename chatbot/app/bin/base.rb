@@ -1,6 +1,6 @@
 require 'action_view'
 include ActionView::Helpers::DateHelper
-COSTS{
+COSTS={
     "truth_or_dare" => 20,
     "spar"=>60,
     "sheep_spar"=>120,
@@ -117,6 +117,7 @@ def like_a_sheep(user, message, chatter)
     chatter.("Meow Meow I'm A cow. I said Meow meow I'm a cow.")
 end
 def like_a_nori(user, message, chatter)
+    puts(user)
     chatter.("Nyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     chatter.("nyamit nyyy nyould nyooo nyooo nyoo nyat?!")
 end

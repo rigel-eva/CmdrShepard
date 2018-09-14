@@ -57,11 +57,11 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.1.0)
     minitest (5.11.3)
     netrc (0.11.0)
-    nokogiri (1.8.3)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.7.2)
+      mini_portile2 (~> 2.1.0)
     opus-ruby (1.0.1)
       ffi
     pg (1.0.0)
@@ -99,9 +99,10 @@ DEPENDENCIES
   discordrb
   eventmachine
   faye-websocket
+  nokogiri (= 1.7.2)
   pg
   rest-client
   twitch-chat!
 
 BUNDLED WITH
-   1.11.2
+   1.16.2
