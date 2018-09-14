@@ -1,9 +1,10 @@
 require "rubygems"
-require "bundler/setup"
 require "active_record"
+require "bundler/setup"
 require 'erb'
 require 'twitch/chat'
 require "discordrb"
+#puts "#{ApplicationRecord.class}"
 CMDRSHEPARD=true;
 COMMAND_PREFIX="!"
 #Getting Active Record set up (Taken from https://github.com/jwo/ActiveRecord-Without-Rails/blob/master/ar-no-rails.rb)
