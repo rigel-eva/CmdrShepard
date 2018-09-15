@@ -42,12 +42,14 @@ puts "Spinning up Timekeeper"
         else
             chatters=JSON::parse(RestClient.get("http://tmi.twitch.tv/group/user/#{User.find_by(owner:true).twitch_user.name}/chatters"))["chatters"]
             viewers=chatters["viewers"]
+            #viewers=chatters["moderators"]#Debug Code
             moderators=chatters["moderators"]
             viewers.each{|u|
                 sheepGiven=1
                 sheepGiven+=3 if(moderators.include?(u))
                 luser=TwitchUser.findOrCreatebyName(u)
-                luser.user.sheep+=1
+                luser.user.sheep+=sheepGiven
+                luser.timeWatched+=1
                 logger.debug("giving #{sheepGiven} sheep to #{u}")
                 luser.user.save!
                 luser.save!
