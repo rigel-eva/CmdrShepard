@@ -1,1 +1,0 @@
-### CmdrShepard - and this is my favorite shop on the citadel
