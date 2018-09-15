@@ -1,1 +1,2 @@
-max_files: 6000
+exclude:
+  -/tmp/**/*
