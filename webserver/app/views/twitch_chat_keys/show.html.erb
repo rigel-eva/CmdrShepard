@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<h3>Available Channels:</h3>
+<ul>
+    <%@twitch_chat_key.targetChannels.each{|channel|%>
+        <li><%=channel%></li>
+    <%}%>
+</ul>
 <%= link_to 'Edit', edit_twitch_chat_key_path(@twitch_chat_key) %> |
 <%= link_to 'Back', twitch_chat_keys_path %>

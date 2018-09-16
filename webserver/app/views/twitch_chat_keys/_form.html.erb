@@ -12,6 +12,8 @@
   <% end %>
 
   <div class="actions">
+    <%#Need to add fancy functionality to list all available chat channels in twitch%>
+    Target Channels: <%= form.select(:targetChannels, [['nyori','nyori'], ['cmdrsheparddev','cmdrsheparddev']], {}, { :multiple => true, :size => 5 })%>
     <%= form.submit %>
   </div>
 <% end %>

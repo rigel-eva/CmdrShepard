@@ -6,20 +6,21 @@ twitch_user=chat_oauth.user.twitch_user
 puts "Configing Twitch Bots"
 chat_oauth.targetChannels.each{|channel|
     puts "\tChannel: #{channel}"
+    bc=@botCommands
     twitchClient=Twitch::Chat::Client.new(channel:channel, username:chat_oauth.name,nickname:chat_oauth.name, password:"oauth:#{chat_oauth.token}")do
         #Debug Code:
-        # on(:connected) do
-        #     send_message "Yo! Everything is working on this end!"
-        #     puts @botCommands
-        # end  
+        on(:connected) do
+             send_message "Yo! Everything is working on this end!"
+             puts "Bot Commands: #{bc}"
+        end  
         on(:message) do |user, message|
             #log "Recieved Message!: #{message.to_s}"
             match=message.message.match(/(?:^#{COMMAND_PREFIX})(\S+)/)
             log match[-1] if match
-            if(match&&@botCommands.has_key?(match[-1]))
+            if(match&&bc.has_key?(match[-1]))
                 user_id=message.userParams['user-id']
                 twitch_user=TwitchUser.findOrCreatebyUID(user_id)
-                @botCommands[match[-1]].(twitch_user,message, method(:send_message))
+                bc[match[-1]].(twitch_user,message, method(:send_message))
             end
         end
         #Should implement join in next patch to twitch-chat...
@@ -30,6 +31,9 @@ puts "Spinning up Twitch Bots"
 (0..@twitchClients.length-1).each{|i|
         puts "\tChannel: #{@twitchClients[i].channel.name}"
         @threads["twitch_#{i}"]=Thread.new{
+
+    logger = Logger.new(STDOUT)
+            logger.debug(@botCommands.has_key?("nyaa"))
             @twitchClients[i].run!
         }
 }
