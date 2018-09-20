@@ -5,16 +5,16 @@ source 'https://rubygems.org'
 # ruby '2.3.1'
 
 # Database, Active Record
-gem 'nokogiri', '~> 1.8.2' 
+gem 'nokogiri', '~> 1.8.2'
 gem 'activerecord'
 gem 'pg'
 # websocket Hosts
 gem 'eventmachine'
 gem 'faye-websocket'
 # Twitch/Discord Clients
-gem 'twitch-chat', :git => 'https://github.com/rigel-eva/twitch-chat.git'
+gem 'twitch-chat', git: 'https://github.com/rigel-eva/twitch-chat.git'
 gem 'discordrb'
 gem 'rest-client'
 gem 'actionview'
-#S potify Client
+# Spotify Client
 gem 'rspotify'

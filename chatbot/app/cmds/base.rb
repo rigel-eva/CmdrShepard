@@ -62,7 +62,7 @@ def gift(user, message, chatter)
   else
     # ok let's go ahead and split up or match into what we are actually after
     ammount = match[-1].to_i
-    user_target = user.class.findUserFromChat(match[-2])
+    user_target = user.class.find_user_from_chat(match[-2])
     if ammount > user.user.sheep
       return_string = "You can't give more sheep than you currently have! (Current Sheep: #{user.user.sheep})"
     else
@@ -88,9 +88,9 @@ def truth_or_dare(user, message, chatter)
   chatter.call(return_string)
 end
 
-def spar(_user, message, chatter)
-  return_string = ""
-  match = message.match(/^\S+/)
+def spar(_user, _message, chatter)
+  # return_string = ""
+  # match = message.match(/^\S+/)
   # Should add some command stuff here to have the bot whisper to both the player and send the Owner (Marz) a message
   chatter.call("Spar is Currently not Implemented")
 end
@@ -117,7 +117,6 @@ def cocast(_user, _message, chatter)
 end
 
 def stream_request(user, message, _chatter)
-  return_string = ""
   match = message.match(/^\S+ ([\s\S]+)/)
   return_string = if match.nil?
     "#{user.mention} , #{usage_helper(:stream_request)} [Game]"

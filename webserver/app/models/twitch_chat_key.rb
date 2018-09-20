@@ -6,9 +6,10 @@ class TwitchChatKey < ApplicationRecord
     "@#{name}"
   end
   class<<self
-      def setupKey(auth_hash, session = nil)
+      def setup_key(auth_hash, session = nil)
         unless session.nil?
-          # Ok if we got to this point we are assuming that the user already has associated a twitch account with the program
+          # Ok if we got to this point we are assuming that the user already has associated a
+          # twitch account with the program
           twitch_chat_key = TwitchChatKey.find_or_create_by(uid: auth_hash['uid'])
           twitch_chat_key.user = User.find_or_create_by(id: session[:user_id])
           twitch_chat_key.name = auth_hash.info['name']

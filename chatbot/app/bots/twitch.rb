@@ -22,7 +22,7 @@ chat_oauth.targetChannels.each do |channel|
       log match[-1] if match
       if match && bc.key?(match[-1])
         user_id = message.userParams['user-id']
-        twitch_user = TwitchUser.findOrCreatebyUID(user_id)
+        twitch_user = TwitchUser.find_or_create_by_uid(user_id)
         bc[match[-1]].call(twitch_user, message, method(:send_message))
       end
     end
@@ -34,7 +34,7 @@ puts "Spinning up Twitch Bots"
 (0..@twitch_clients.length - 1).each do |i|
   puts "\tChannel: #{@twitch_clients[i].channel.name}"
   @threads["twitch_#{i}"] = Thread.new do
-    logger = Logger.new(STDOUT)
+    # logger = Logger.new(STDOUT)
     @twitch_clients[i].run!
   end
 end
@@ -62,7 +62,7 @@ puts "Spinning up Timekeeper"
           sheep_given = 1
           # checking if there is anything special that we should do with sheep
           sheep_given += 3 if moderators.include?(u)
-          luser = TwitchUser.findOrCreatebyName(u) # checking if we have that user or creating it if we don't.
+          luser = TwitchUser.find_or_create_by_name(u) # checking if we have that user or creating it if we don't.
           luser.user.sheep += sheep_given
           luser.timeWatched += 1
           logger.debug("giving #{sheep_given} sheep to #{u}")

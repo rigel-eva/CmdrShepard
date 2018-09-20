@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       @user = User.from_twitch(request.env['omniauth.auth'], session)
       welcome_message = "Welcome, "
     when "twitch_chat"
-      @user = TwitchChatKey.setupKey(request.env['omniauth.auth'], session)
+      @user = TwitchChatKey.setup_key(request.env['omniauth.auth'], session)
       welcome_message = "Thank you for entering your stream key, "
     end
     puts @user

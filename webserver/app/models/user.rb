@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_one :twitch_user
   has_many :twitch_chat_key
   class << self
-      def from_thirdParty(id, session = nil)
+      def from_third_party(id, session = nil)
         id = session[:user_id] if id.nil? && !session.nil?
         user = find_or_create_by(id: id)
         if user.sheep.nil?
@@ -22,7 +22,7 @@ class User < ApplicationRecord
         # ... realized I could do something smart here ... I could just check the twitch id here via discord connections
         # ... which is going to require a rails migration ...
         discord_user = DiscordUser.find_or_create_by(uid: auth_hash['uid'])
-        user = from_thirdParty(discord_user.user_id, session)
+        user = from_third_party(discord_user.user_id, session)
         discord_user.uid = auth_hash['uid']
         discord_user.name = auth_hash.extra.raw_info['username']
         discord_user.discriminator = auth_hash.extra.raw_info['discriminator']
@@ -38,7 +38,7 @@ class User < ApplicationRecord
         # automaticly fill in the id and the username on this end, and I could do a check on if the image has
         # been filled in!
         twitch_user = TwitchUser.find_or_create_by(uid: auth_hash['uid'])
-        user = from_thirdParty(twitch_user.user_id, session)
+        user = from_third_party(twitch_user.user_id, session)
         twitch_user.uid = auth_hash['uid']
         twitch_user.name = auth_hash.info['name']
         twitch_user.icon = auth_hash.info['image']

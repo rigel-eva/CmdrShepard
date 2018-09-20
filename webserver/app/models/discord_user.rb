@@ -6,18 +6,18 @@ class DiscordUser < ApplicationRecord
     "<@#{uid}> "
   end
   class << self
-      def fromDiscordRB(user)
-        getDiscordUserFromUID(user.id)
+      def from_discord_rb(user)
+        get_discord_user_from_uid(user.id)
       end
 
-      def findUserFromChat(textContent)
-        uid = textContent.match(/<@\d+>/)
-        getDiscordUserFromUID(uid)
+      def find_user_from_chat(text_content)
+        uid = text_content.match(/<@\d+>/)
+        get_discord_user_from_uid(uid)
       end
 
-      def getDiscordUserFromUID(uid)
+      def get_discord_user_from_uid(uid)
         discord_user = DiscordUser.find_or_create_by(uid: uid)
-        discord_user.user = User.from_thirdParty(discord_user.user_id)
+        discord_user.user = User.from_third_party(discord_user.user_id)
         discord_user.save!
       end
   end

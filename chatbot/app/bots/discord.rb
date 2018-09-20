@@ -6,7 +6,7 @@ discord_bot = Discordrb::Bot.new token: ENV["DISCORD_CHAT_KEY"]
   discord_bot.message(with_text: COMMAND_PREFIX + command) do |event|
     # ok let's grab our user first ...
     puts event.author.id
-    discord_user = DiscordUser.getDiscordUserFromUID(event.author.id)
+    discord_user = DiscordUser.get_discord_user_from_uid(event.author.id)
     function.call(discord_user, event.message.content, lambda { |string| event.respond string })
   end
 end

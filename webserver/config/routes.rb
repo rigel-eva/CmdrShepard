@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   root 'welcome_page#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/twitch_chat', to: 'twitch_chat_keys#index'
-  match '/twitch_chat/enable': 'twitch_chat_keys#enable', via: :get
+  match '/twitch_chat/enable' => 'twitch_chat_keys#enable', via: :get
 end
