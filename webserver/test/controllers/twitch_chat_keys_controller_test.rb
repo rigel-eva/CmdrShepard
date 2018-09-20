@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class TwitchChatKeysControllerTest < ActionDispatch::IntegrationTest
@@ -17,7 +19,7 @@ class TwitchChatKeysControllerTest < ActionDispatch::IntegrationTest
 
   test "should create twitch_chat_key" do
     assert_difference('TwitchChatKey.count') do
-      post twitch_chat_keys_url, params: { twitch_chat_key: {  } }
+      post twitch_chat_keys_url, params: { twitch_chat_key: {} }
     end
 
     assert_redirected_to twitch_chat_key_url(TwitchChatKey.last)
@@ -34,7 +36,7 @@ class TwitchChatKeysControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update twitch_chat_key" do
-    patch twitch_chat_key_url(@twitch_chat_key), params: { twitch_chat_key: {  } }
+    patch twitch_chat_key_url(@twitch_chat_key), params: { twitch_chat_key: {} }
     assert_redirected_to twitch_chat_key_url(@twitch_chat_key)
   end
 

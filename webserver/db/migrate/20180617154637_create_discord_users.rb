@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDiscordUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :discord_users do |t|
@@ -5,7 +7,7 @@ class CreateDiscordUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :icon
       t.string :email
-      t.belongs_to :user, index:true
+      t.belongs_to :user, index: true
       t.timestamps
     end
   end

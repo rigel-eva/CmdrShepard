@@ -1,16 +1,20 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-#ruby '2.3.1'
+# ruby '2.3.1'
 
-#Database, Active Record
+# Database, Active Record
 gem 'nokogiri', '~> 1.8.2' 
 gem 'activerecord'
 gem 'pg'
-#websocket Hosts
+# websocket Hosts
 gem 'eventmachine'
 gem 'faye-websocket'
-#Twitch/Discord Clients
+# Twitch/Discord Clients
 gem 'twitch-chat', :git => 'https://github.com/rigel-eva/twitch-chat.git'
 gem 'discordrb'
 gem 'rest-client'
 gem 'actionview'
+#S potify Client
+gem 'rspotify'

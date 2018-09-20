@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TwitchChatKeysController < ApplicationController
   before_action :set_twitch_chat_key, only: [:show, :edit, :update, :destroy]
 
@@ -38,19 +40,20 @@ class TwitchChatKeysController < ApplicationController
   end
 
   def enable
-    key=TwitchChatKey.find(params[:id])
-    key.enabled= !key.enabled
+    key = TwitchChatKey.find(params[:id])
+    key.enabled = !key.enabled
     key.save!
     puts key.enabled
     redirect_back(fallback_location: root_path)
   end
+
   # PATCH/PUT /twitch_chat_keys/1
   # PATCH/PUT /twitch_chat_keys/1.json
   def update
     respond_to do |format|
       puts "twitch_chat_key_params: #{twitch_chat_key_params}"
       if @twitch_chat_key.update(twitch_chat_key_params)
-        puts @twitch_chat_key.targetChannels;
+        puts @twitch_chat_key.targetChannels
         format.html { redirect_to @twitch_chat_key, notice: 'Twitch chat key was successfully updated.' }
         format.json { render :show, status: :ok, location: @twitch_chat_key }
       else
@@ -59,6 +62,7 @@ class TwitchChatKeysController < ApplicationController
       end
     end
   end
+
   # DELETE /twitch_chat_keys/1
   # DELETE /twitch_chat_keys/1.json
   def destroy
@@ -70,16 +74,17 @@ class TwitchChatKeysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_twitch_chat_key
-      @twitch_chat_key = TwitchChatKey.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def twitch_chat_key_params
-      returner=params["twitch_chat_key"].permit(:enabled).tap{|whitelisted|
-        whitelisted[:targetChannels]=params["twitch_chat_key"][:targetChannels][1..-1]
-      }
-      returner
+  # Use callbacks to share common setup or constraints between actions.
+  def set_twitch_chat_key
+    @twitch_chat_key = TwitchChatKey.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def twitch_chat_key_params
+    returner = params["twitch_chat_key"].permit(:enabled).tap do |whitelisted|
+      whitelisted[:targetChannels] = params["twitch_chat_key"][:targetChannels][1..-1]
     end
+    returner
+  end
 end
